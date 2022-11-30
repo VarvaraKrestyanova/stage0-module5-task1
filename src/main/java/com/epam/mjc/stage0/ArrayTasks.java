@@ -12,6 +12,7 @@ public class ArrayTasks {
      */
     public String[] seasonsArray() {
 
+        return new String[] {"Winter", "Spring", "Summer", "Autumn"};
     }
 
     /**
@@ -26,6 +27,12 @@ public class ArrayTasks {
      */
     public int[] generateNumbers(int length) {
 
+        int placeholder = 1;
+        int[] arr = new int[length];
+        for (int i = 0; i < length; i++) {
+            arr[i] = placeholder++;
+        }
+        return arr;
     }
 
     /**
@@ -37,6 +44,12 @@ public class ArrayTasks {
      * arr = [5, -3, -4] -> sum = -2
      */
     public int totalSum(int[] arr) {
+
+        int sum = 0;
+        for (int i = 0; i < arr.length; i++) {
+            sum += arr[i];
+        }
+        return sum;
 
     }
 
@@ -51,6 +64,14 @@ public class ArrayTasks {
      */
     public int findIndexOfNumber(int[] arr, int number) {
 
+        int index = -1;
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == number) {
+                index = i;
+                break;
+            }
+        }
+        return index;
     }
 
     /**
@@ -63,6 +84,15 @@ public class ArrayTasks {
      * arr = ["pineapple", "apple", "pen"] -> ["pen", "apple", "pineapple"]
      */
     public String[] reverseArray(String[] arr) {
+
+        String[] resArr = new String[arr.length];
+        int j = 0;
+        int i = arr.length - 1;
+        while (i >= 0) {
+            resArr[j] = arr[i];
+            j++; i--;
+        }
+        return resArr;
 
     }
 
@@ -79,6 +109,20 @@ public class ArrayTasks {
      */
     public int[] getOnlyPositiveNumbers(int[] arr) {
 
+        int counter = 0;
+        for (int k : arr) {
+            if (k > 0) {counter++;}
+        }
+
+        int[] resArr = new int[counter];
+        int j = 0;
+        for (int k : arr) {
+            if (k > 0) {
+                resArr[j] = k;
+                j++;
+            }
+        }
+        return resArr;
     }
 
     /**
@@ -93,5 +137,31 @@ public class ArrayTasks {
      */
     public int[][] sortRaggedArray(int[][] arr) {
 
+        for (int i = 0; i < arr.length - 1; i++) {
+            for (int j = i + 1; j < arr.length; j++) {
+                if (arr[i].length > arr[j].length) {
+                    int[] tempArr = arr[i];
+                    arr[i] = arr[j];
+                    arr[j] = tempArr;
+                }
+            }
+        }
+
+        for (int k = 0; k < arr.length; k++) {
+            int[] inner = arr[k];
+            for (int i = 0; i < inner.length - 1; i++) {
+                for (int j = i + 1; j < inner.length; j++) {
+                    if (inner[i] > inner[j]) {
+                        int currentMax = inner[i];
+                        inner[i] = inner[j];
+                        inner[j] = currentMax;
+                    }
+                }
+            }
+        }
+
+        return arr;
+
     }
+
 }
