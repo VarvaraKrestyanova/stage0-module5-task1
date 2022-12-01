@@ -137,12 +137,14 @@ public class ArrayTasks {
      */
     public int[][] sortRaggedArray(int[][] arr) {
 
+        //changed the sorting according to the principle 'firstly find first value' on the principle 'firstly find the last value'
+        //to avoid changing the sequence of arrays with the same size
         for (int i = 0; i < arr.length - 1; i++) {
-            for (int j = i + 1; j < arr.length; j++) {
-                if (arr[i].length >= arr[j].length) {
-                    int[] tempArr = arr[i];
-                    arr[i] = arr[j];
-                    arr[j] = tempArr;
+            for (int j = 0; j < arr.length - 1 - i; j++) {
+                if (arr[j].length > arr[j + 1].length) {
+                    int[] tempArr = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = tempArr;
                 }
             }
         }
